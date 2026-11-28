@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { Suspense } from 'react';
-import MyFruits from './Fruits';
+import MyFruits from "./fruits.jsx";
 //Click the "Fruits.jsx" tab to check out the Fruits.jsx file
 
 function App() {
