@@ -1,18 +1,14 @@
 import { createRoot } from 'react-dom/client';
-import { Suspense, lazy } from 'react';
 
-const Cars = lazy(() => import("./cars.jsx"));
-
-function App() {
+const Header = () => {
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Cars />
-      </Suspense>
-    </div>
+    <>
+      <h1 style={{color: "red"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
   );
 }
 
 createRoot(document.getElementById('root')).render(
-  <App />
+  <Header />
 );
