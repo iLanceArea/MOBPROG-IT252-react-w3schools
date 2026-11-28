@@ -1,14 +1,16 @@
 import { createRoot } from 'react-dom/client';
+import styles from './BlueHeader.module.css';
 
-const Header = () => {
+function App() {
   return (
-    <>
-      <h1 style={{backgroundColor: "lightblue"}}>Hello Style!</h1>
-      <p>Add a little style!</p>
-    </>
+    <div>
+      <h1 className="myheader">
+        My Header
+      </h1>
+    </div>
   );
 }
 
 createRoot(document.getElementById('root')).render(
-  <Header />
+  <App />
 );
