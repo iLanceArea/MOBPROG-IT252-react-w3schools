@@ -2,58 +2,50 @@ import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function MyForm() {
-  const [inputs, setInputs] = useState({});
+  const [selectedFruit, setSelectedFruit] = useState('banana');
 
-  const handleChange = (e) => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    setInputs(values => ({...values, [name]: value}))
-  }
+  const handleChange = (event) => {
+    setSelectedFruit(event.target.value);
+  };
 
   const handleSubmit = (event) => {
-    let fillings = '';
-    if (inputs.tomato) fillings += 'tomato';
-    if (inputs.onion) {
-      if (inputs.tomato) fillings += ' and ';
-      fillings += 'onion';
-    }
-    if (fillings == '') fillings = 'no fillings';
-    alert(`${inputs.firstname} wants a burger with ${fillings}`);
+    alert(`Your favorite fruit is: ${selectedFruit}`);
     event.preventDefault();
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>My name is:
-      <input 
-        type="text" 
-        name="firstname" 
-        value={inputs.firstname} 
-        onChange={handleChange}
-      />
-      </label>
-
-      <p>I want a burger with:</p>
-      <label>Tomato:
-      <input 
-        type="checkbox" 
-        name="tomato" 
-        checked={inputs.tomato} 
-        onChange={handleChange}
-      />
-      </label>
-      <label>Onion:
+      <p>Select your favorite fruit:</p>
+      <label>
         <input 
-          type="checkbox" 
-          name="onion" 
-          checked={inputs.onion} 
-          onChange={handleChange}
-        />
-        </label>
-        <button type="submit">Submit</button>
+          type="radio" 
+          name="fruit" 
+          value="apple" 
+          checked={selectedFruit === 'apple'} 
+          onChange={handleChange} /> Apple
+      </label>
+      <br />
+      <label>
+        <input 
+          type="radio" 
+          name="fruit" 
+          value="banana" 
+          checked={selectedFruit === 'banana'} 
+          onChange={handleChange} /> Banana
+      </label>
+      <br />
+      <label>
+        <input 
+          type="radio" 
+          name="fruit" 
+          value="cherry" 
+          checked={selectedFruit === 'cherry'} 
+          onChange={handleChange} /> Cherry
+      </label>
+      <br />
+      <button type="submit">Submit</button>
     </form>
-  )
+  );
 }
 
 createRoot(document.getElementById('root')).render(
