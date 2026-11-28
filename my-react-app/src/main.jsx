@@ -1,18 +1,17 @@
 import { createRoot } from 'react-dom/client';
-import styles from './Button.module.css';
+import styled from 'styled-components';
+
+const MyHeader = styled.h1`
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+`;
 
 function App() {
   return (
-    <div>
-      <button className={`${styles.mybutton} ${styles.primary}`}>
-        My Primary Button
-      </button>
-      <br/>
-      <br/>
-      <button className={`${styles.mybutton} ${styles.secondary}`}>
-        My Secondary Button
-      </button>
-    </div>
+    <>
+      <MyHeader>Welcome!</MyHeader>
+    </>
   );
 }
 
