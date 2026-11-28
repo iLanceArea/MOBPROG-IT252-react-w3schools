@@ -1,23 +1,44 @@
 import { createRoot } from 'react-dom/client'
 
-const users = [
-  { id: 1, name: 'John', age: 30 },
-  { id: 2, name: 'Jane', age: 25 },
-  { id: 3, name: 'Bob', age: 35 }
-];
-
-function UserList() {
+function Son(props) {
   return (
-    <ul>
-      {users.map(user => 
-        <li key={user.id}>
-          {user.name} is {user.age} years old
-        </li>
-      )}
-    </ul>
+    <div style={{background: 'lightgreen'}}>
+      <h2>Son</h2>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+function Daughter(props) {
+  const {brand, model} = props;
+  return (
+    <div style={{background: 'lightblue'}}>
+      <h2>Daughter</h2>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+function Parent() {
+  return (
+    <div>
+      <h1>My two Children</h1>
+      <Son>
+        <p>
+          This was written in the Parent component,
+          but displayed as a part of the Son component
+        </p>
+      </Son>
+      <Daughter>
+        <p>
+          This was written in the Parent component,
+          but displayed as a part of the Daughter component
+        </p>
+      </Daughter>
+    </div>
   );
 }
 
 createRoot(document.getElementById('root')).render(
-  <UserList />
-)
+  <Parent />
+);
