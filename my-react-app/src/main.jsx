@@ -1,32 +1,25 @@
 import { createRoot } from 'react-dom/client';
-import { useState, useTransition } from 'react';
+import { forwardRef, useRef } from 'react';
 
-function SearchBar() {
-  const [text, setText] = useState('');
-  const [results, setResults] = useState('');
-  const [isPending, startTransition] = useTransition();
+const MyInput = forwardRef((props, ref) => (
+  <input ref={ref} {...props} />
+));
 
-  const handleChange = (e) => {
-    // Urgent: Update input right away
-    setText(e.target.value);
+function App() {
+  const inputRef = useRef();
 
-    // Non-urgent: Update search results
-    startTransition(() => {
-      setResults(e.target.value);
-    });
+  const focusInput = () => {
+    inputRef.current.focus();
   };
 
   return (
     <div>
-      <input value={text} onChange={handleChange} />
-      {isPending ? (
-        <p>Loading...</p>
-      ) : (
-        <p>Search results for: {results}</p>
-      )}
+      <MyInput ref={inputRef} placeholder="Type here..." />
+      <button onClick={focusInput}>Focus Input</button>
     </div>
   );
 }
+
 createRoot(document.getElementById('root')).render(
-  <SearchBar />
+  <App />
 );
