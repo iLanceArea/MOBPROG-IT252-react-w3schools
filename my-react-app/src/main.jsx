@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import { Suspense } from 'react';
-import Cars from "./cars";
-// Click the "cars.jsx" tab to see the content of the "Cars.jsx" file
+import { Suspense, lazy } from 'react';
+
+const Cars = lazy(() => import('./Cars'));
 
 function App() {
   return (
