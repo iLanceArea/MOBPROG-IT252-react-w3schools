@@ -1,13 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
 function Car(props) {
+  const {brand, model} = props;
   return (
-    <h2>My car is a {props.carinfo[0]} {props.carinfo[1]}!</h2>
+    <h2>I love my {brand} {model}!</h2>
   );
 }
 
-const carInfo = ["Ford", "Mustang"];
-
 createRoot(document.getElementById('root')).render(
-  <Car carinfo={carInfo} />
+  <Car brand="Ford" model="Mustang" color="red" year={1969} />
 );
