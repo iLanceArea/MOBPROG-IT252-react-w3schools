@@ -1,17 +1,38 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-function Fruit() {
-  const x = 5;
-  let y = "Apple";
-  if (x < 10) {
-    y = "Banana";
-  }
+function Home() {
+  return <h1>Home Page</h1>;
+}
 
+function About() {
+  return <h1>About Page</h1>;
+}
+
+function Contact() {
+  return <h1>Contact Page</h1>;
+}
+
+function App() {
   return (
-    <h1>{y}</h1>
+    <BrowserRouter>
+      {/* Navigation */}
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/about">About</Link> |{" "}
+        <Link to="/contact">Contact</Link>
+      </nav>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 createRoot(document.getElementById('root')).render(
-  <Fruit />
+  <App />
 );
