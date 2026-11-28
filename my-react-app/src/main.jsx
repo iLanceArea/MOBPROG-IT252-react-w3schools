@@ -1,18 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
-function Car() {
-  const mystyles = {
-    color: "red",
-    fontSize: "20px",
-    backgroundColor: "lightyellow",
-  };
-
+function Fruit() {
+  const x = 5;
   return (
-    <>
-      <h1 style={mystyles}>My car</h1>
-    </>
+    <h1>{(x) < 10 ? "Banana" : "Apple"}</h1>
   );
 }
+
 createRoot(document.getElementById('root')).render(
-  <Car />
+  <Fruit />
 );
