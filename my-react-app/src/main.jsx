@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { Suspense, lazy } from 'react';
 
-const Cars = lazy(() => import('./Cars'));
+const Cars = lazy(() => import("./cars.jsx"));
 
 function App() {
   return (
