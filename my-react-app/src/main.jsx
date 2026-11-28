@@ -1,46 +1,32 @@
 import { createRoot } from 'react-dom/client';
 import { useState, useTransition } from 'react';
 
-function SearchResults({ query }) {
-  // Simulate slow search results
-  const items = [];
-  if (query) {
-    for (let i = 0; i < 1000; i++) {
-      items.push(<li key={i}>Result for {query} - {i}</li>);
-    }
-  }
-  return <ul>{items}</ul>;
-}
-
-function App() {
-  const [input, setInput] = useState('');
-  const [query, setQuery] = useState('');
+function SearchBar() {
+  const [text, setText] = useState('');
+  const [results, setResults] = useState('');
   const [isPending, startTransition] = useTransition();
 
   const handleChange = (e) => {
-    // Urgent: Update input field
-    setInput(e.target.value);
-    
+    // Urgent: Update input right away
+    setText(e.target.value);
+
     // Non-urgent: Update search results
     startTransition(() => {
-      setQuery(e.target.value);
+      setResults(e.target.value);
     });
   };
 
   return (
     <div>
-      <input 
-        type="text" 
-        value={input} 
-        onChange={handleChange} 
-        placeholder="Type to search..."
-      />
-      {isPending && <p>Loading results...</p>}
-      <SearchResults query={query} />
+      <input value={text} onChange={handleChange} />
+      {isPending ? (
+        <p>Loading...</p>
+      ) : (
+        <p>Search results for: {results}</p>
+      )}
     </div>
   );
 }
-
 createRoot(document.getElementById('root')).render(
-  <App />
+  <SearchBar />
 );
