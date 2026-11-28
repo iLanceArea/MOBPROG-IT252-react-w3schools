@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import "./MyStyle.scss";
+import "./MyStyles.module.css";
 
 function MyHeader() {
   return (
