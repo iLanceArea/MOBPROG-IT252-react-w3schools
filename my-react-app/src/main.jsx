@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { Suspense } from 'react';
-import Cars from "./Cars.jsx";
+import Cars from "./cars";
 // Click the "cars.jsx" tab to see the content of the "Cars.jsx" file
 
 function App() {
